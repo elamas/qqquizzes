@@ -1,0 +1,17 @@
+<div class="page" id="home">
+	<a href="#"><h3 class="text-center speakable" id="autospeak">Elije un juego <span class="glyphicon glyphicon-volume-up"></h3></a>
+	<div class="row">
+		{{#each quizzes}}
+		<div class="col-md-3 col-sm-6">
+			<!-- contenedor para poder meter padding en las columnas -->
+			<!-- sólo con el div ya o hace -->
+			<div class="thumbnail"> 
+				<a href="#"> <img src="{{img}}" class="img-responsive img-home" quizz-index="{{@index}}"/> </a>
+				<div class="caption">
+					<a href="#"><h4 class="text-center speakable" lang="{{lang}}">{{title}} <span class="glyphicon glyphicon-volume-up"></span></h4></a>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</div>

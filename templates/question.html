@@ -1,0 +1,15 @@
+<div class="row">
+	<a href="#"><h3 class="text-center speakable" id="autospeak" lang="{{lang}}">{{title}} <span class="glyphicon glyphicon-volume-up"></span></h3></a>
+</div>
+<div class="row">
+	{{#each answers}}
+	<div class="col-md-3 col-sm-6">
+		<div class="thumbnail"><!-- para que meta padding -->
+			<a href="#"> <img src="{{img}}" class="img-answer" answer-index="{{@index}}" title="{{title}}" lang="{{lang}}"/> </a>
+			<div class="caption">
+				<a href="#"><h4 class="text-center speakable" lang="{{lang}}">{{title}} <span class="glyphicon glyphicon-volume-up"></span></h4></a>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>

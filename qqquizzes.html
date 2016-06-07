@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">    		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="lib/jquery/jquery-1.11.1.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<!-- handlebars -->
+		<script src="lib/handlebars/handlebars-v1.3.0.js"></script>
+		<script src="js/json.js"></script>
+		<script src="js/model/QQAnswer.js"></script>
+		<script src="js/model/QQQuestion.js"></script>
+		<script src="js/model/QQQuizz.js"></script>
+		<script src="js/model/QQQuizzAppModel.js"></script>
+		<script src="js/model/QQQuizzAppModel.js"></script>
+		<script src="js/util/TemplatesManager.js"></script>
+		<script src="js/util/utils.js"></script>
+		<script src="js/controller/QQQuizzAppController.js"></script>
+		<script type="text/javascript">
+			var controller;
+			function init() {
+				controller = new QQQuizzAppController(json);
+				controller.home(false);
+			}
+		</script>
+		<title>QQQuizzes</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				init();
+			});
+		</script>
+		<div class="container-fluid" id="container">
+			<!--
+			<div class="page" id="loading">
+				Loading...
+			</div>
+			-->
+		</div>
+		<!--
+		<audio src="resources/aplausos.mp3" id="audioOk">
+		</audio>
+		<audio src="resources/error.mp3" id="audioKO">
+		</audio>
+		-->		
+		
+		<!-- handlebars templates begin -->
+		<script id="home-template" type="text/x-handlebars-template">
+			<div class="page" id="home">
+				<a href="#"><h3 class="text-center speakable" id="autospeak">Elije un juego <span class="glyphicon glyphicon-volume-up"></h3></a>
+				<div class="row">
+					{{#each quizzes}}
+					<div class="col-md-3 col-sm-6">
+						<!-- contenedor para poder meter padding en las columnas -->
+						<!-- sólo con el div ya o hace -->
+						<div class="thumbnail"> 
+							<a href="#"> <img src="{{img}}" class="img-responsive img-home" quizz-index="{{@index}}"/> </a>
+							<div class="caption">
+								<a href="#"><h4 class="text-center speakable" lang="{{lang}}">{{title}} <span class="glyphicon glyphicon-volume-up"></span></h4></a>
+							</div>
+						</div>
+					</div>
+					{{/each}}
+				</div>
+			</div>
+		</script>	
+		
+		<script id="quizz-template" type="text/x-handlebars-template">
+			<div class="page" id="quizz">
+				<ol class="breadcrumb">
+				  <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+				  <li><a href="#"><span class="speakable" lang="{{lang}}">{{title}} <span class="glyphicon glyphicon-volume-up"></span></span></a></li>
+				</ol>
+				<div class="row hidden-xs hidden-sm">
+					<img class="img-responsive thumbnail col-sm-2 center-block" style="float:none" src="{{img}}"/>
+				</div>	
+				<div id="question">
+				</div>
+				<div class="text-center"><button type="button" class="btn btn-default" id="nextButton">Siguiente pregunta &raquo;</button></div>	
+			</div>
+		</script>
+		
+		<script id="question-template" type="text/x-handlebars-template">
+			<div class="row">
+				<a href="#"><h3 class="text-center speakable" id="autospeak" lang="{{lang}}">{{title}} <span class="glyphicon glyphicon-volume-up"></span></h3></a>
+			</div>
+			<div class="row">
+				{{#each answers}}
+				<div class="col-md-3 col-sm-6">
+					<div class="thumbnail"><!-- para que meta padding -->
+						<a href="#"> <img src="{{img}}" class="img-answer" answer-index="{{@index}}" title="{{title}}" lang="{{lang}}"/> </a>
+						<div class="caption">
+							<a href="#"><h4 class="text-center speakable" lang="{{lang}}">{{title}} <span class="glyphicon glyphicon-volume-up"></span></h4></a>
+						</div>
+					</div>
+				</div>
+				{{/each}}
+			</div>
+		</script>
+		
+		<script id="end-template" type="text/x-handlebars-template">
+			<div class="page" id="end">
+				<h1 class="text-center">Fin</h1>
+				<div class="text-center">
+					<button type="button" class="btn btn-default btn-lg home-buton">
+					  <span class="glyphicon glyphicon-home"></span> Menú
+					</button>	
+				</div>
+			</div>			
+		</script>	
+		<!-- handlebars templates end -->
+	</body>
+				
+	</body>
+</html>
